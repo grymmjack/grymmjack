@@ -6,6 +6,6 @@
 - 💬 Ask me about computer art, computer music, and vintage computing topics.
 - 📫 How to reach me: https://www.youtube.com/grymmjack | https://rickchristy.com
 - 😄 Pronouns: He / Him / His
-- ⚡ Fun fact: When I was a little boy I wanted to be an astronaut, but because I have asthma I was rejected by the AirForce as a teenager.
+- ⚡ Fun fact: When I was a little boy I wanted to be an astronaut.
 
 I'll elaborate on this stuff later. Anyway, hi.
