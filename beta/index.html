@@ -1,0 +1,420 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>grymmjack</title>
+    <style>
+        /* debug */
+        * {
+            /* border: 1px solid red; */
+        }
+
+        /* fonts */
+        @font-face {
+            font-family: 'Geometos Regular';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Geometos Regular'), url('Geometos.woff') format('woff');
+        }
+
+        /* vars */
+        * {
+            --opacity-fg: 0.9;
+            --opacity-nav: 0.8;
+            --opacity-nav-active: 1.0;
+            --opacity-nav-icon: 0.5;
+            --opacity-nav-icon-active: 1.0;
+            --opacity-siderail: 0.8;
+            --opacity-siderail-active: 1.0;
+            --color-bg: #444;
+            --color-bg-blockquote: rgba(33, 33, 33, 0.5);
+            --color-fg-blockquote: #777;
+            --color-fg: #DDD;
+            --color-fg-accent: #FFF;
+            --color-fg-action-idle: #999;
+            --color-fg-action-active: #FFF;
+            --color-nav-border: #777;
+            --color-nav-accent-video: rgb(94, 255, 0);
+            --color-nav-accent-art: rgb(255, 247, 0);
+            --color-nav-accent-music: rgb(255, 145, 0);
+            --color-nav-accent-design: rgb(255, 13, 0);
+            --color-nav-accent-code: rgb(187, 0, 255);
+            --color-nav-accent-word: rgb(0, 166, 255);
+            --color-nav-accent: #FFF;
+            --color-nav-current: #000;
+            --color-h1: #AAA;
+            --color-h2: #CCC;
+            --color-bg-article-primary: rgba(0, 0, 0, 0.4);
+            --color-fg-article-primary: #BBB;
+            --color-fg-article-secondary: #999;
+            --font-global: sans-serif;
+            --font-headings: 'Geometos Regular';
+            --font-nav: 'Geometos Regular';
+        }
+
+        /* reset */
+        * {
+            margin: 0;
+        }
+        html {
+            font-size: 16px;
+        }
+
+        /* side rail */
+        aside {
+            text-align: center;
+            padding: 2rem !important;            
+        }
+        aside img {
+            width: 48px;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+        aside menu {
+            padding: 0;
+        }
+        aside menu li a:link img,
+        aside menu li a:visited img {
+            opacity: 0.5 !important;
+        }
+        aside menu li a:hover img,
+        aside menu li a:active img {
+            opacity: 1.0 !important;
+        }
+        aside li,
+        aside li a {
+            list-style: none;
+        }
+        aside a {
+            display: inline-block;
+        }
+        #logo {
+            margin-bottom: 2rem;
+            opacity: 1.0 !important;
+            width: 64px !important;
+        }
+        #sword-logo {
+            width: 3.5rem;
+            margin-left: 2rem;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        
+        /* nav bar */
+        nav {
+            font-family: var(--font-nav);
+            margin: 1rem 2rem;
+        }
+        nav menu {
+            padding-left: 0rem;
+            font-size: 0.95rem;
+            line-height: 1.5rem;
+        }
+        nav div.menu-options img {
+            width: 1.25rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+            height: 1.2rem;
+            opacity: var(--opacity-nav-icon);
+        }
+        nav div.menu-options > :first-child {
+            font-weight: bold;
+            border-bottom: 3px solid var(--color-nav-border);
+            margin-bottom: 0.3rem;
+            line-height: 1.5rem;
+            font-size: 1.5rem;
+        }
+        nav div.menu-options {
+            margin-bottom: 1rem;
+        }
+        nav div.menu-options > :first-child a:any-link {
+            color: var(--color-fg-accent);
+        }
+        nav div.menu-options > :first-child a:hover {
+            color: var(--color-fg-action-active);
+        }
+        nav div.menu-options:hover img {
+            opacity: var(--opacity-nav-icon-active) !important;
+        }
+        nav li,
+        nav li a {
+            list-style: none;
+            padding: 0.2rem;
+            border-top: 2px transparent;
+        }
+        nav div.menu-options menu li.current {
+            background-color: #000;
+            border-top: 2px solid var(--color-nav-current);
+            opacity: 1.0 !important;
+        }
+        nav div.menu-options menu li.current a {
+            color: var(--color-nav-accent);
+        }
+        nav div.menu-options#video > :first-child {
+            border-bottom-color: var(--color-nav-accent-video);
+        }
+        nav div.menu-options#art > :first-child  {
+            border-bottom-color: var(--color-nav-accent-art);
+        }
+        nav div.menu-options#music > :first-child {
+            border-bottom-color: var(--color-nav-accent-music);
+        }
+        nav div.menu-options#design > :first-child {
+            border-bottom-color: var(--color-nav-accent-design);
+        }
+        nav div.menu-options#code > :first-child {
+            border-bottom-color: var(--color-nav-accent-code);
+        }
+        nav div.menu-options#word > :first-child {
+            border-bottom-color: var(--color-nav-accent-word);
+        }
+
+        /* browser overrides / structure */
+        body {
+            font-family: var(--font-global);
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            background-color: var(--color-bg);
+            color: var(--color-fg);
+        }
+        a {
+            text-decoration: none;
+        }
+        a:link, a:visited {
+            color: var(--color-fg-action-idle);
+        }
+        a:hover, a:active {
+            color: var(--color-fg-action-active);
+        }
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: var(--font-headings);
+        }
+        main h2 {
+            font-size: 3rem;
+            margin-left: 2.5rem;
+            line-height: 2rem;
+            margin-bottom: 4rem;
+            color: var(--color-h1);
+        }
+        h2 a {
+            border-bottom: 1px dotted var(--color-h1);
+        }
+        h2 a:any-link {
+            color: var(--color-h2) !important;
+        }
+        blockquote h1 {
+            background: var(--color-bg-blockquote);
+            color: var(--color-fg-blockquote);
+            padding: 4rem 1.75rem;
+            font-size: 4rem;
+            line-height: 4rem;
+            margin-bottom: 4rem;
+            border: 10px solid var(--color-bg);
+            border-radius: 1.5rem;
+            border-top: 0px;
+            border-radius: 0px 0px 1.5rem 1.5rem;
+        }
+        main a:any-link {
+            color: var(--color-fg-accent);
+        }
+        main p {
+            margin-bottom: 1rem;
+            line-height: 1.75rem;
+        }
+        main ul {
+            margin-bottom: 1rem;
+        }
+        footer {
+            margin: 2rem;
+            text-align: center;
+        }
+        footer b {
+            color: rgb(251, 107, 107);
+            font-size: 2rem;
+            line-height: 2rem;
+            vertical-align: middle;
+        }
+        abbr {
+            cursor: help;
+        }
+        .no-break {
+            white-space: nowrap;
+        }
+
+        /* layout */
+        #wrapper {
+            display: flex;
+            flex-flow: row wrap;
+        }
+        main,
+        nav,
+        aside,
+        footer {
+            width: 100%;
+        }
+        @media all and (min-width: 600px) {
+          nav, aside { flex: 1 0 0; }
+        }
+        @media all and (min-width: 800px) {
+          main   { flex: 100 0px; }
+          main   { order: 2; }
+          nav    { order: 1; } 
+          aside  { order: 3; }
+          footer { order: 4; }
+        }
+        div.flex-horizontal {
+            display: flex;
+            flex-flow: row wrap;
+            gap: 1rem;
+        }
+        div.flex-horizontal h2 {
+            flex: 100 0 0;
+        }
+        div.flex-horizontal article {
+            flex: 1 0 0;
+        }
+
+        /* articles */
+        article {
+            padding: 1rem 2rem;
+            line-height: 1.5rem;
+        }
+        article.primary p {
+            line-height: 2rem;
+        }
+        article.primary {
+            background-color: var(--color-bg-article-primary);
+            color: var(--color-fg-article-primary);
+            font-size: 1.5rem;
+            line-height: 2.5rem !important;
+            border: 10px solid var(--color-bg);
+            border-radius: 1.5rem;
+        }
+        article.secondary {
+            color: var(--color-fg-article-secondary);
+        }
+        article.secondary > * {
+            color: var(--color-fg-article-secondary);
+        }
+        article h3,
+        article h4,
+        article h5,
+        article h6 {
+            margin: 1rem 0;
+        }
+        article h4 {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <main>
+            <blockquote><h1>I am a friendly old nerd.<img src="logo-sword.svg" alt="sword and anvil on fire" id="sword-logo"></h1></blockquote>
+            <h2><a href="https://www.youtube.com/watch?v=S9snO-9jsho">Hot fudge, comin' atcha!</a></h2>
+            <div class="flex-horizontal">
+                <article class="primary">
+                    <h3>ooo'rah!</h3>
+                    <p>My site is finally coming along. It's a <abbr title="Work in Progress">WIP</abbr> of course, but still better than <a href="/">the placeholder logo</a> lolcats.</p>
+                    <p>I'm going to stick with HTML, CSS, and maybe some Javascript, but I've decided that I'm not going to use any <abbr title="Server Side Rendering">SSR</abbr> or back-end besids GitHub pages.</p>
+                    <p>Mostly because I'm cheap. But also, I'm very curious what can be accomplished with <abbr title="Static Site Generators">SSG's</abbr> like <a href="//gohugo.io">Hugo</a>, and <a href="astro.build">Astro</a>.</p>
+                </article>
+                <article class="secondary">
+                    <h4>Pool the parties gold <span class="no-break">[Y] / N ?</span></h4>
+                    <p>I never throw anything away. I have a lot of stuff jammed into the few categories to explore.</p>
+                    <p>Hopefully something good, fun, or inspiring to you!</p>
+                    <p>If you do find something engaging, interesting, etc. please let me know!</p>
+                    <p>I love feedback.</p>
+                </article>
+                <article class="secondary">
+                    <h4>Need some help or goodies?</h4>
+                    <p>I really enjoy helping people.</p>
+
+                    <p>If I can help you with something:</p>
+                    <ul>
+                        <li>Videos</li>
+                        <li>Art</li>
+                        <li>Music</li>
+                        <li>Programming</li>
+                        <li>Opinions</li>
+                        <li>Critiques</li>
+                        <li>etc.</li>
+                    </ul>
+                    <p>please, just <a href="#">ask</a>.</p>
+                    <p>I might not be able to respond immediately or deliver
+                        results instantly, but I will do my best as time permits!
+                    </p>
+                </article>
+            </div>
+        </main>
+        <nav>
+            <div class="menu-options" id="video">
+                <div><a href="video"><img src="icon-nav-video.svg" alt="icon: triangle in circle play button">video</a></div>
+                <menu>
+                    <li class="current"><a href="video/pc-music">pc music</a></li>
+                    <li><a href="video/art-design">art + design</a></li>
+                    <li><a href="video/programming">programming</a></li>
+                    <li><a href="video/video-games">video games</a></li>
+                </menu>
+            </div>
+            <div class="menu-options" id="art">
+                <div><a href="art"><img src="icon-nav-art.svg" alt="icon: paintbrush and pen">art</a></div>
+                <menu>
+                    <li><a href="art/text">text</a></li>
+                    <li><a href="art/pixel">pixel</a></li>
+                    <li><a href="art/digital">digital</a></li>
+                    <li><a href="art/analog">analog</a></li>
+                </menu>
+            </div>
+            <div class="menu-options" id="music">
+                <div><a href="music"><img src="icon-nav-music.svg" alt="icon: speaker with music">music</a></div>
+                <menu>
+                    <li><a href="music/tracks">tracks</a></li>
+                    <li><a href="music/sampes">samples</a></li>
+                    <li><a href="music/presets">presets</a></li>
+                </menu>
+            </div>
+            <div class="menu-options" id="design">
+                <div><a href="design"><img src="icon-nav-design.svg" alt="icon: rule and calipers">design</a></div>
+                <menu>
+                    <li><a href="design/identity">identity</a></li>
+                    <li><a href="design/interface">interface</a></li>
+                    <li><a href="design/type">type</a></li>
+                </menu>
+            </div>
+            <div class="menu-options" id="code">
+                <div><a href="code"><img src="icon-nav-code.svg" alt="icon: cog">code</a></div>
+                <menu>
+                    <li><a href="code/projects">projects</a></li>
+                    <li><a href="code/tools">tools</a></li>
+                    <li><a href="code/config">config</a></li>
+                </menu>
+            </div>
+            <div class="menu-options" id="word">
+                <div><a href="word"><img src="icon-nav-word.svg" alt="icon: speech bubble and exclamation point">word</a></div>
+                <menu>
+                    <li><a href="word/bio">bio</a></li>
+                    <li><a href="word/prose">prose</a></li>
+                    <li><a href="word/journal">journal</a></li>
+                </menu>
+            </div>
+        </nav>
+        <aside>
+            <a href="#" title="Home"><img id="logo" src="gj.svg" alt="gj"></a>
+            <menu>
+                <li><a href="//youtube.com/grymmjack" title="grymmjack's YouTube Channel"><img id="youtube" src="icon-youtube.svg" alt="youtube"></a></li>
+                <li><a href="//soundcloud.com/grymmjack" title="grymmjack's Soundcloud"><img id="soundcloud" src="icon-soundcloud.svg" alt="soundcloud"></a></li>
+                <li><a href="//16colo.rs/artist/grymmjack" title="grymmjack's 16 colo.rs Artist page"><img id="16colors" src="icon-16colors.svg" alt="16colo.rs"></a></li>
+                <li><a href="//lospec.com/grymmjack" title="grymmjack's Lospec page"><img id="lospec" src="icon-lospec.svg" alt="lospec"></a></li>
+                <li><a href="//github.com/grymmjack" title="grymmjack's GitHub"><img id="github" src="icon-github.svg" alt="github"></a></li>
+                <li><a href="//qb64phoenix.com" title="QB64 Phoenix Edition Forum"><img id="qb64" src="icon-qb64.svg" alt="QB64"></a></li>
+                <li><a href="//twitter.com/grymmjack" title="grymmjack's Twitter"><img id="twitter" src="icon-twitter.svg" alt="twitter"></a></li>
+            </menu>
+        </aside>
+
+    <footer>
+        made with <b>&hearts;</b> by <a href="//linkedin.com/in/rickchristy">Rick Christy</a> (grymmjack)
+    </footer>
+     </div>   
+</body>
+</html>
