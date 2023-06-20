@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 137 141" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-332.65,-162.677)">
+        <g transform="matrix(0.855114,0,0,0.878058,314.692,127.554)">
+            <g id="flame">
+                <path id="red" d="M29,168L29,153L21,153L21,58L29,58L29,40L45,40L45,168L29,168ZM173,168L157,168L157,40L173,40L173,58L181,58L181,153L173,153L173,168Z" style="fill:rgb(171,21,0);"/>
+                <path id="bright-red" serif:id="bright red" d="M157,122L157,168L141,168L141,122L157,122ZM61,122L61,168L45,168L45,122L61,122Z" style="fill:rgb(255,87,87);"/>
+                <path id="yellow" d="M77,136L77,168L61,168L61,136L77,136ZM141,136L141,168L125,168L125,136L141,136Z" style="fill:rgb(255,255,87);"/>
+            </g>
+            <g id="sword">
+                <g id="blade" transform="matrix(0.244,0,0,0.244,-135.24,-9.76)">
+                    <rect x="935.41" y="462.131" width="65.574" height="266.393" style="fill:white;"/>
+                </g>
+                <path id="hilt-steel" serif:id="hilt steel" d="M77,104L77,90L125,90L125,104L77,104ZM125,104L141,104L141,122L125,122L125,104ZM77,104L77,122L61,122L61,104L77,104Z" style="fill:rgb(171,171,171);"/>
+                <rect id="hilt-handle" serif:id="hilt handle" x="93" y="58" width="16" height="32" style="fill:rgb(171,87,0);"/>
+                <path id="hilt-dark-gray" serif:id="hilt dark gray" d="M77,90L77,104L61,104L61,90L77,90ZM141,90L141,104L125,104L125,90L141,90ZM109,40L109,58L93,58L93,40L109,40Z" style="fill:rgb(87,87,87);"/>
+            </g>
+            <g id="forge">
+                <rect id="plate" x="29" y="186" width="144" height="14" style="fill:rgb(87,87,87);"/>
+            </g>
+        </g>
+    </g>
+</svg>
