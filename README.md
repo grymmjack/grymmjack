@@ -1,7 +1,7 @@
 ### Hi there 👋
 
-- 🔭 I’m currently working on [godot-console](https://github.com/grymmjack/godot-console)
-- 🌱 I’m currently learning [Godot](https://godotengine.org) Game Engine 4.x
+- 🔭 I’m currently working on [DRAW](https://github.com/grymmjack/DRAW)
+- 🌱 I’m currently learning [MCP](https://github.com/grymmjack/qb64pe-mcp-server) how to make my own MCP Server
 - 👯 I’m looking to collaborate on building old school apps, games, and so on in any language. I can draw, make music, as well as code.
 - 💬 Ask me about computer art, computer music, and vintage computing topics.
 - 📫 How to reach me: https://www.youtube.com/grymmjack | https://rickchristy.com
